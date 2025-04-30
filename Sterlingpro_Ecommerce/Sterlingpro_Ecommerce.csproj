@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,7 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+    <None Include="wwwroot\images\blender.jpg" />
+    <None Include="wwwroot\images\cap.jpg" />
+    <None Include="wwwroot\images\clean-code.jpg" />
+    <None Include="wwwroot\images\clock.jpg" />
+    <None Include="wwwroot\images\cookware.jpg" />
+    <None Include="wwwroot\images\csharp-book.jpg" />
+    <None Include="wwwroot\images\d8e2d998-fd4a-4b07-9f46-bfa057c5f867.png" />
+    <None Include="wwwroot\images\design-patterns.jpg" />
+    <None Include="wwwroot\images\efcore-book.jpg" />
+    <None Include="wwwroot\images\image source.jpg" />
+    <None Include="wwwroot\images\jacket.jpg" />
+    <None Include="wwwroot\images\laptop.jpg" />
+    <None Include="wwwroot\images\linq-book.jpg" />
+    <None Include="wwwroot\images\mens-tshirt.jpg" />
+    <None Include="wwwroot\images\microwave.jpg" />
+    <None Include="wwwroot\images\smartphone.jpg" />
+    <None Include="wwwroot\images\sneakers.jpg" />
+    <None Include="wwwroot\images\sofa.jpg" />
+    <None Include="wwwroot\images\speaker.jpg" />
+    <None Include="wwwroot\images\vacuum.jpg" />
+    <None Include="wwwroot\images\watch.jpg" />
+    <None Include="wwwroot\images\womens-dress.jpg" />
   </ItemGroup>
 
   <ItemGroup>

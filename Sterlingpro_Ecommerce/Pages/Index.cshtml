@@ -10,7 +10,8 @@
     {
         <div class="col-md-3">
             <div class="card mb-4">
-                <img src="@product.ProductUrl" class="card-img-top" alt="@product.ProductName" />
+               @*  <img src="@product.ProductUrl" class="card-img-top" alt="@product.ProductName" /> *@
+                <img src="@product.ProductUrl" class="card-img-top" alt="@product.ProductName" style="height: 200px; object-fit: contain;" />
                 <div class="card-body">
                     <h5 class="card-title">@product.ProductName</h5>
                     <p class="card-text">@product.Description</p>
