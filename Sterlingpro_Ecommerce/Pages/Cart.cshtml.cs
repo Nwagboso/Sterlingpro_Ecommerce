@@ -19,20 +19,20 @@ namespace Sterlingpro_Ecommerce.Pages
 
         public async Task OnGetAsync()
         {
-            var userId = 1; // Simulated logged-in user
+            var userId = HttpContext.Session.GetInt32("UserId") ?? 0; // Simulated logged-in user
             CartItems = await _cartRepo.GetCartItemsAsync(userId);
         }
 
         public async Task<IActionResult> OnPostIncreaseAsync(int productId)
         {
-            var userId = 1;
+            var userId = HttpContext.Session.GetInt32("UserId") ?? 0;
             await _cartRepo.AddToCartAsync(userId, productId);
             return RedirectToPage();
         }
 
         public async Task<IActionResult> OnPostDecreaseAsync(int productId)
         {
-            var userId = 1;
+            var userId = HttpContext.Session.GetInt32("UserId") ?? 0;
             var item = (await _cartRepo.GetCartItemsAsync(userId))
                         .FirstOrDefault(c => c.ProductId == productId);
 
@@ -46,7 +46,7 @@ namespace Sterlingpro_Ecommerce.Pages
 
         public async Task<IActionResult> OnPostRemoveAsync(int productId)
         {
-            var userId = 1;
+            var userId = HttpContext.Session.GetInt32("UserId") ?? 0;
             await _cartRepo.RemoveFromCartAsync(userId, productId);
             return RedirectToPage();
         }

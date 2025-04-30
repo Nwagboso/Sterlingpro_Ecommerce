@@ -28,11 +28,11 @@ namespace Sterlingpro_Ecommerce.Pages
             //var userId = User.Identity?.Name ?? "guest"; // Replace with real logic
             var userId = HttpContext.Session.GetInt32("UserId") ?? 0;
 
-            if (userId == 0)
+            if (userId == null || userId == 0)
             {
                 return RedirectToPage("Login");
             }
-           
+
             await _cartRepository.AddToCartAsync(userId, productId);
             return RedirectToPage("Cart");
            

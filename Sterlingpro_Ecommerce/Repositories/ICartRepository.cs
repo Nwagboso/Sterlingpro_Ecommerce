@@ -9,5 +9,6 @@ namespace Sterlingpro_Ecommerce.Repositories
         Task AddToCartAsync(int userId, int productId);
         Task UpdateQuantityAsync(int userId, int productId, int quantity);
         Task RemoveFromCartAsync(int userId, int productId);
+        
     }
 }

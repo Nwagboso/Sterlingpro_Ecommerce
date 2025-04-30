@@ -17,14 +17,14 @@ namespace Sterlingpro_Ecommerce.Pages
         }
         public async Task OnGetAsync()
         {
-            var userId = 1; // Simulated logged-in user
+            var userId = HttpContext.Session.GetInt32("UserId") ?? 0;  // Simulated logged-in user
             var items = await _cartRepo.GetCartItemsAsync(userId);
             TotalAmount = items.Sum(i => i.Quantity * i.Product.Price);
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var userId = 1; // Simulated logged-in user
+            var userId = HttpContext.Session.GetInt32("UserId") ?? 0; // Simulated logged-in user
             await _orderRepo.SubmitOrderAsync(userId);
             return RedirectToPage("Submitted");
         }
