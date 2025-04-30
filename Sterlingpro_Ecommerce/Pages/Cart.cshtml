@@ -1,0 +1,48 @@
+﻿@page
+@model CartModel
+@{
+    ViewData["Title"] = "Your Cart";
+}
+
+<h2>Product Cart</h2>
+
+@if (!Model.CartItems.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>₦@item.Product.Price.ToString("N2")</td>
+                    <td>₦@((item.Quantity * item.Product.Price).ToString("N2"))</td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button class="btn btn-sm btn-success" formaction="?handler=Increase">+</button>
+                            <button class="btn btn-sm btn-warning" formaction="?handler=Decrease">-</button>
+                            <button class="btn btn-sm btn-danger" formaction="?handler=Remove">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-primary" asp-page="/Checkout">Checkout</a>
+    <a class="btn btn-primary" asp-page="/Index">Continue Shopping</a>
+}
+

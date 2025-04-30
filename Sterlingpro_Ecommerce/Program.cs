@@ -14,6 +14,8 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -25,6 +27,9 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
+
 
 app.UseAuthorization();
 

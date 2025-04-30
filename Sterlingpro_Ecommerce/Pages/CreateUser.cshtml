@@ -1,0 +1,40 @@
+﻿@page
+@model CreateUserModel
+@{
+    ViewData["Title"] = "Create User";
+}
+
+<h2>Create User</h2>
+
+<form method="post" class="mt-4">
+    <div class="mb-3">
+        <label asp-for="User.FullName" class="form-label"></label>
+        <input asp-for="User.FullName" class="form-control" />
+        <span asp-validation-for="User.FullName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="User.Email" class="form-label"></label>
+        <input asp-for="User.Email" class="form-control" />
+        <span asp-validation-for="User.Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="User.PhoneNumber" class="form-label"></label>
+        <input asp-for="User.PhoneNumber" class="form-control" />
+        <span asp-validation-for="User.PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="User.Password" class="form-label"></label>
+        <input asp-for="User.Password" class="form-control" />
+        <span asp-validation-for="User.Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-dark" asp-page="/Login">Have an Account?</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

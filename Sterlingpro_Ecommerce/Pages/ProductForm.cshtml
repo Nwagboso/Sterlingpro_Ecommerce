@@ -1,0 +1,70 @@
+﻿@page
+@model ProductFormModel
+@{
+    ViewData["Title"] = "Manage Products";
+}
+
+<h2>Product Management</h2>
+<a class="btn btn-primary mb-3" asp-page="ProductForm">Add New</a>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label asp-for="Product.ProductName" class="form-label"></label>
+            <input asp-for="Product.ProductName" class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Product.Price" class="form-label"></label>
+            <input asp-for="Product.Price" class="form-control" type="number" step="0.01" />
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Product.Description" class="form-label"></label>
+        <textarea asp-for="Product.Description" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Product.CategoryId" class="form-label"></label>
+        <select asp-for="Product.CategoryId" class="form-select" asp-items="Model.Categories"></select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Product Image</label>
+        <input type="file" name="ImageFile" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Save Product</button>
+</form>
+
+<hr />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td>@product.ProductName</td>
+            <td>@product.Category.CategoryName</td>
+            <td>@product.Price</td>
+            <td><img src="@product.ProductUrl" width="80" /></td>
+            <td>
+                <a asp-page="ProductForm" asp-route-id="@product.Id" class="btn btn-warning btn-sm">Edit</a>
+                <form method="post" asp-page-handler="Delete" asp-route-id="@product.Id" class="d-inline">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

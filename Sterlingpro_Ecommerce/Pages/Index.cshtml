@@ -1,10 +1,26 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Products";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h2>Products</h2>
+<div class="row">
+    @foreach (var product in Model.Products)
+    {
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <img src="@product.ProductUrl" class="card-img-top" alt="@product.ProductName" />
+                <div class="card-body">
+                    <h5 class="card-title">@product.ProductName</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text"><strong>Price:</strong> ₦@product.Price.ToString("N2")</p>
+                    <form method="post" asp-page-handler="AddToCart">
+                        <input type="hidden" name="productId" value="@product.Id" />
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
 </div>

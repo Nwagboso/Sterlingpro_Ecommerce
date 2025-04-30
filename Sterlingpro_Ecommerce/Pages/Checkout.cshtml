@@ -1,0 +1,18 @@
+﻿@page
+@model CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h2>Checkout</h2>
+
+<p>Total Amount: <strong>₦@Model.TotalAmount.ToString("N2")</strong></p>
+
+<form method="post">
+    <button type="submit" class="btn btn-success">Submit Order</button>
+    <a class="btn btn-primary" asp-page="/Index">Continue Shopping</a>
+    <a class="btn btn-dark" asp-page="/Cart">Back to Cart</a>
+</form>
+
+
+
